@@ -12,3 +12,7 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run e2e:headless
+      - run: actions/upload-artifact@3
+        with :
+          name: e2e-video
+          path: cypress/videos/
