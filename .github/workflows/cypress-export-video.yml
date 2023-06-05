@@ -11,5 +11,3 @@ jobs:
         #   node-version: '18'
       - run: npm install
       - run: npm run e2e:headless
-      - name: Download the build folder
-        uses: actions/download-artifact@v3
