@@ -1,0 +1,15 @@
+name: Build next.js app
+# Cada vez que haga push se ejecutara, eso quiero decir la linea de abajo
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # - uses: actions/setup-node@v3
+        # with:
+        #   node-version: '18'
+      - run: npm install
+      - run: npm run e2e:headless
+      - name: Download the build folder
+        uses: actions/download-artifact@v3
