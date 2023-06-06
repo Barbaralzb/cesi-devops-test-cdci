@@ -6,19 +6,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # - uses: actions/checkout@v3
-      # - run-name: Connect to VM and update repository
-        - run : ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_KEY }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
+      - name: Connect to VM and update repository
+        run : ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_KEY }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
 
       # - uses : webfactory/ssh-agent@v0.5.4
       # - with : 
       #   ssh-private-key : ${{ secrets.SSH_KEY }}
 
-      # - run-name: Install dependencies and build
-        - run : cd cesi-devops-test-cdci/
-        - run : git pull
-        - run: npm install
-        - run: npm run build
+      - name: Install dependencies and build
+        run : cd cesi-devops-test-cdci/
+        run : git pull
+        run: npm install
+        run: npm run build
 
-      # - run-name: Start the application
-        - run: pm2 restart all
+      - run-name: Start the application
+        run: pm2 restart all
 
