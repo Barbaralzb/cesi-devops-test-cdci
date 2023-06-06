@@ -1,4 +1,4 @@
-name: Deploy
+name: deploy
 run-name: ${{ github.actor }} deploy
 on: [push]
 jobs:
@@ -7,18 +7,4 @@ jobs:
     steps:
       # - uses: actions/checkout@v3
       - name: Connect to VM and update repository
-        run : ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -i ${{ secrets.SSH_KEY }}
-
-      # - uses : webfactory/ssh-agent@v0.5.4
-      # - with : 
-      #   ssh-private-key : ${{ secrets.SSH_KEY }}
-
-      - name: Install dependencies and build
-        run : cd cesi-devops-test-cdci/
-        run : git pull
-        run: npm install
-        run: npm run build
-
-      - run-name: Start the application
-        run: pm2 restart all
-
+        run : ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -i ${{ secrets.SSH_KEY }} && cd cesi-devops-test-cdci/ && git pull && npm install && npm run build && pm2 restart all
