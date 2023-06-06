@@ -1,6 +1,6 @@
 name: Build next.js app
 # Cada vez que haga push se ejecutara, eso quiero decir la linea de abajo
-on: [push]
+# on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
