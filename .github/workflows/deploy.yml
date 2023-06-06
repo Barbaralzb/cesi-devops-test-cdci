@@ -6,15 +6,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        - name: Connect to VM and update repository
+      # - name: Connect to VM and update repository
         - run : ssh -i ${{ secrets.KEY }} ${{ variables.ADMIN }}@${{ variables.ADMIN }}
 
-      - name: Install dependencies and build
+      # - name: Install dependencies and build
         - run : cd cesi-devops-test-cdci/
         - run : git pull
         - run: npm install
         - run: npm run build
 
-      - name: Start the application
+      # - name: Start the application
         - run: pm2 restart all
 
