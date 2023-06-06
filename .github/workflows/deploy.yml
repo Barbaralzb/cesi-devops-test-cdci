@@ -2,10 +2,10 @@ name: Deploy
 run-name: ${{ github.actor }} deploy
 on: [push]
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - run : ssh -i ${{ secrets.KEY }} ${{ variables.ADMIN }}@${{ variables.ADMIN }}
       - run : cd cesi-devops-test-cdci/
       - run : git pull
