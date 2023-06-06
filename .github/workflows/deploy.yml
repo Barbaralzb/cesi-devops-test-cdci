@@ -4,12 +4,21 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    # env:
+    #   ADMIN: admin
+    #   DNS_IPV4_PUBLIC: ec2-15-236-141-210.eu-west-3.compute.amazonaws.com
+
     steps:
-      - uses: actions/checkout@v3
-      - run : ssh -i ${{ secrets.KEY }} ${{ variables.ADMIN }}@${{ variables.ADMIN }}
-      - run : cd cesi-devops-test-cdci/
-      - run : git pull
-      - run: npm install
-      - run: npm run build
-      - run: npm run start
-      - run: pm2 start npm --name "cesi-devops-test-cdci" -- start
+      # - uses: actions/checkout@v3
+        - name: Connect to VM and update repository
+        - run : ssh -i ${{ secrets.KEY }} ${{ variables.ADMIN }}@${{ variables.DNS_IPV4_PUBLIC }}
+
+      - name: Install dependencies and build
+        - run : cd cesi-devops-test-cdci/
+        - run : git pull
+        - run: npm install
+        - run: npm run build
+
+      - name: Start the application
+        - run: pm2 restart all
+
