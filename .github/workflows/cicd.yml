@@ -43,9 +43,9 @@ jobs:
       #     ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       #     chmod 644 ~/.ssh/known_hosts
 
-      - uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
+      # - uses: webfactory/ssh-agent@v0.5.4
+      #   with:
+      #     ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - run: |
           ssh -i ${{ secrets.SSH_KEY }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "\
