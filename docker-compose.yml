@@ -6,3 +6,12 @@ services:
     volumes : 
       - .:/app
     command : npm run dev 
+
+
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: cube
+      MYSQL_USER: cube
+      MYSQL_PASSWORD: cube
