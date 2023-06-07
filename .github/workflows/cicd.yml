@@ -49,7 +49,7 @@ jobs:
 
       - run: |
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "\
-          cd cesi-test-cicd && \
+          cd cesi-devops-test-cdci && \
           git pull && \
           npm install && \
           npm run build && \
