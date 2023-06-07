@@ -47,12 +47,12 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
-      - run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "\
-          cd cesi-devops-test-cdci && \
-          git pull && \
-          npm install && \
-          npm run build && \
-          pm2 restart all"
+      # - run: |
+      #     ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "\
+      #     cd cesi-devops-test-cdci && \
+      #     git pull && \
+      #     npm install && \
+      #     npm run build && \
+      #     pm2 restart all"
       # OU
-      #- run: ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "ls"
+      - run: ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "ls"
