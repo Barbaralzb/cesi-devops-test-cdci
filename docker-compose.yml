@@ -2,7 +2,7 @@ services:
   web:
     build: .
     ports:
-      - "8000:5000"
+      - "3000:3000"
     volumes : 
       - .:/app
     command : npm run dev 
@@ -15,3 +15,12 @@ services:
       MYSQL_DATABASE: cube
       MYSQL_USER: cube
       MYSQL_PASSWORD: cube
+
+      # Donnees persistantes - Pour le CUBE
+    volumes:
+    - ./docker/db:/var/lib/mysql
+
+  adminer : 
+    image : adminer
+    ports : 
+      - 8080:8080
