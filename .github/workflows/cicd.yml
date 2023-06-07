@@ -48,7 +48,7 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "\
+          ssh -i ${{ secrets.SSH_KEY }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "\
           cd cesi-devops-test-cdci && \
           git pull && \
           npm install && \
